@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+body
+{
+    margin: 50px auto;
+    max-width: 350px;
+    font-family: 'Raleway', sans-serif;
+  background-color: red;
+}
+.kwadraciok
+{
+  width: 100px;
+  height: 100px;
+  background-color: #2137;
+  display: inline-block;
+  border: solid 1px black;
+}
+</style>
+</head>
+<body>
+  <input id="kolor" type="text" name="kolor">
+  <button id="tlo">Zmien kolor tla</button>
+  <button id="kwadrat">Zmien kolor bartusia</button>
+  <ul id="lista">
+   
+    <li>
+      teskt
+    </li>
+  </ul>
+  <div class="kwadraciok"></div>
+  <div class="kwadraciok"></div>
+  <div class="kwadraciok"></div>
+ 
+ 
+ 
+<script>
+  var body = document.querySelector('body'); //pobieram klase body
+  var tlo = document.getElementById("tlo"); //pobieram guzik do zmiany tla
+  var kwadrat = document.getElementById("kwadrat"); //pobieram guzik do zmiany bartusia
+ 
+  var ul = document.querySelector('ul'); //pobieram klase ul
+  var li = document.createElement("li"); //tworze element li
+ 
+  var t = document.createTextNode("Przykladowy tekst"); // tworze teskt
+ 
+  li.appendChild(t);// wrzuca tekst w środek li ustawia tekst jako dziecko li a li jako rodzica tekstu
+  ul.appendChild(li);// wrzuca li w środek ul
+ 
+ 
+ 
+  kwadrat.addEventListener('click',function(){ //obsługuje guzik do zmiany koloru bartusia, czyli co ma sie stac jak go klikne
+ 
+    var kwadraciok = document.getElementsByClassName("kwadraciok")//pobieram kwadrat po jego klasie
+    var kolor = document.getElementById("kolor").value; //pobieram wartosc inputa ktory ma id kolor, pobieram kolor na taki jaki zostal wpisany w inpucie
+    if (kolor == '')//sprawadzam czy input nie jest pusty
+    {
+      alert("Muszisz cos wpisac!");
+    }
+    else // jeśli w inpucie jest coś wpisane idę dalej
+    {
+      for (i=0; i<kwadraciok.length; i++) //pentla dzięki której zmianie ulegną wszystkie bartusie
+      {
+        kwadraciok[i].style.backgroundColor=kolor;// zmieniam kolor bartusia
+      }
+    }
+ 
+  });
+ 
+  tlo.addEventListener('click',function(){ //obsługuje guzik do zmiany koloru tła
+ 
+    var kolor = document.getElementById("kolor").value; //pobieram wartosc inputa ktory ma id kolor, pobieram kolor na taki jaki zostal wpisany w inpucie
+    if (kolor == '') //sprawadzam czy input nie jest pusty
+    {
+      alert("Muszisz cos wpisac!"); // jeśli w inpucie jest coś wpisane idę dalej
+    }
+    else
+    {
+      body.style.backgroundColor=kolor; //zmieniam kolor tła
+    }
+ 
+  });
+ 
+  li.addEventListener('dblclick',function(){//obsługuje teskt li czyli co sie stanie z li jesli kilkne dwa razy
+ 
+    var nt = prompt("Podaj nowy teskt");//prosze o podanie nowego tekstu
+    li.innerHTML = nt;//zmieniam stary teskt na nowy
+ 
+  });
+</script>
+ 
+</body>
+</html>
